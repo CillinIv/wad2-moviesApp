@@ -2,6 +2,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieCard from "../src/components/movieCard";
+import MoviesHeader from "../src/components/headerMovieList";
+import MovieList from "../src/components/movieList";
 
 const sample = {
   adult: false,
@@ -92,4 +94,14 @@ storiesOf("Home Page/MovieCard", module)
     const sampleNoPoster = { ...sample, poster_path: undefined };
     return <MovieCard movie={sampleNoPoster} />;
   });
+
+  storiesOf("Home Page/Header", module).add("default", () => (
+    <MoviesHeader numMovies={10} />
+  ));
+
+  storiesOf("Home Page/MovieList", module)
+  .add("default", () => {
+    const movies= [sample, sample, sample, sample, sample]
+    return <MovieList movies={movies} />
+});
 
