@@ -7,19 +7,21 @@ import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom" 
 import FavoriteMoviesPage from './pages/favoritesMoviesPage'       // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
+import UpcomingPage from './pages/upcomingPage';
 
 const App = () => {
   return (
       <BrowserRouter>
         <div className="jumbotron">
-          <SiteHeader />      {/* New Header  */}
+          <SiteHeader /> 
           <div className="container-fluid">
             <Switch>
-          <Route path="/reviews/:id" component={MovieReviewPage} />
-          <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-          <Route path="/movies/:id" component={MoviePage} />
-          <Route path="/" component={HomePage} />
-          <Redirect from="*" to="/" />
+              <Route path="/reviews/:id" component={MovieReviewPage} />
+              <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+              <Route path="/movies/:id" component={MoviePage} />
+              <Route path="/" component={HomePage} />
+              <Route exact path="/movies/upcoming" component={UpcomingPage} />
+              <Redirect from="*" to="/" />
         </Switch>
       </div>
     </div>
@@ -28,3 +30,4 @@ const App = () => {
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
